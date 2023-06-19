@@ -10,3 +10,8 @@ reward for their effort.
 
 Here is a preview of the usage of the project:
 ![](https://github.com/Arcane34/Everyday-Calendar/blob/main/calendarUsage.gif)
+
+
+
+And here is a preview of what a completed calendar would look like:
+![](https://github.com/Arcane34/Everyday-Calendar/blob/main/completedCalendar.gif)
