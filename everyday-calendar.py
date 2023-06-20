@@ -2,11 +2,14 @@ import pygame
 import random
 
  
-        
+# Function used to define a text surface created using the text and the font for the text, which then returns the surface and its dimensions
 def text_objects(text, font):
     textsurface = font.render(text, True, (255, 255, 255))
     return textsurface, textsurface.get_rect()
 
+
+# Function for rendering and checking the status of the buttons, where it checks if the mouse is within its borders to change the button's appearance as required
+# currently only used for the reset button
 def button(msg, x, y, w, h, ic, ac, action=None):
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
@@ -23,12 +26,13 @@ def button(msg, x, y, w, h, ic, ac, action=None):
     screen.blit(textsurf, textrect)
 
 
+#reset function to turn all buttons on calendar off after a year has passed so they can reuse the calendar
 def reset():
     for i in switches:
         i.on = False
 
 
-
+# redraw window function used to draw all the ui elements every frame
 def redrawWin():
     screen.fill(bgC)
     for y in switches:
@@ -38,8 +42,10 @@ def redrawWin():
     pygame.display.update()
 
     
+
 class Button:
-    
+    # button class initialisation function where we determine x, y coordinates, the RGB values of the starting colours when activated, the RGB increments by which to change colour
+    # a variable called opt that allows for more colours to be added to the array and msg which stores the number of the day in the month to be displayed
     def __init__(self, x, y, red,green,blue , rD, gD, bD, opt,msg):
         self.x = x
         self.y = y
@@ -54,6 +60,8 @@ class Button:
         self.opt = opt
         self.msg = msg
         self.textsurf,self.textrect = text_objects(self.msg, smalltext)
+
+    # this is the draw function that will draw the button according to if it is activated, if the mouse is hovering on it and also check for clicks on the buttons
     def draw(self):
         mouse = pygame.mouse.get_pos()
         click = pygame.mouse.get_pressed()
@@ -74,7 +82,7 @@ class Button:
         screen.blit(self.textsurf, self.textrect)
 
         
-
+# this functions saves the state of the board of switches into a text file to be loaded at the start of the program
 def write():
     counter = 0
     for i in progList:
@@ -96,6 +104,7 @@ def write():
             file.write("\n")
             
 
+# initialising pygame window
 pygame.init()
 smalltext = pygame.font.Font("freesansbold.ttf", 15)
 x_width = 1536
@@ -105,6 +114,7 @@ run =True
 clock = pygame.time.Clock()
 bgC = (0,0,0)
 
+#defining the number of days in each month and the cumulative number of days for  normal years and leap years
 normal_y = [31,28,31,30,31,30,31,31,30,31,30,31]
 cu = [31,59,90,120,151,181,212,243,273,304,334,365]
 
@@ -112,6 +122,7 @@ leap_y = [31,29,31,30,31,30,31,31,30,31,30,31]
 cu_L = [31,60,91,121,152,182,213,244,274,305,335,366]
 
 
+# this checks if a text file exists that has a state of all the switches, if not it will initialise a switch board with all switches deactivated
 try:
     progList = []
     with open("progress.txt","r") as file:
@@ -132,12 +143,15 @@ except:
         progList.append(month)
     
            
-
+# initialises the increment (limit var) for the colours, the switch board list and the respective counters to be used for creating the buttons
 limit = 15
 switches =[]
 counter=0
 counter1=0
 
+
+# the following code creates all of the button objects and defines their parameters such as coordinates and so on, currently the way the colours are set is such that every switch has a
+# slight offset in colour to the switches arround it, creating a wave like motion of colours
 for i in range(len(leap_y)):
     for j in range(leap_y[i]):
         day = str(j+1)
@@ -190,6 +204,7 @@ for i in range(len(leap_y)):
         if counter1 == 25:
             counter1 = 0
             
+# the following code changes the states of the switches dependant on the loaded values of the switches from the text file before            
 counter = 0
 for i in progList:
     for j in i:
@@ -199,7 +214,7 @@ for i in progList:
             switches[counter].on = False
         counter+=1
         
-
+# this is the main loop that will execute while the program is running
 while run:
     clock.tick(20)
     for event in pygame.event.get():
@@ -208,6 +223,8 @@ while run:
             run = False
             quit()
 
+    # this loop ensures that the colours change over time every frame for switches that are activated while ensure the increment does not cause the rgb values to be greater than 255
+    # and cycles through a various combination of colours
     for switch in switches:
         red = switch.onC[0]+switch.rD
         green = switch.onC[1]+switch.gD
