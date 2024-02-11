@@ -209,7 +209,6 @@ year = []
 cu = []
 
 date = datetime.date.today()
-print(date)
 
 WEEKDAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -246,7 +245,6 @@ heightOff = (y_width - 30) // 6
 
 jan1 = datetime.date(date.year, 1, 1)
 hOffset = WEEKDAYS.index(jan1.strftime("%A")) * widthOff
-print(hOffset)
 
 
 for mon in range(len(year)):
@@ -299,7 +297,6 @@ dateOffsetAim = [0,0]
 move = False
 screenPos = [0,0]
 while run:
-    print(calendarButtons[70].pos)
 
     monthLabel.msg = MONTHS[browseMonth[0] - 1]
 
@@ -335,7 +332,7 @@ while run:
         dateOffset[1] = bezier(datesPos[1], dateOffsetAim[1], min(time, 1))
 
 
-    clock.tick(60)
+    clock.tick(120)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False

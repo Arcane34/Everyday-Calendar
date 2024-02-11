@@ -1,0 +1,117 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceon54102xjw5"]
+
+[ext_resource type="Script" path="res://Scripts/calendar.gd" id="1_meji6"]
+
+[node name="Calendar" type="VBoxContainer"]
+offset_right = 551.0
+offset_bottom = 485.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_meji6")
+
+[node name="ToolBar" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+tooltip_text = "Browse through your calendar with the left and right buttons."
+
+[node name="Back" type="Button" parent="ToolBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+text = "<"
+
+[node name="MonthYear" type="Label" parent="ToolBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "January"
+horizontal_alignment = 1
+
+[node name="Front" type="Button" parent="ToolBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+text = ">"
+
+[node name="Weekdays" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Weekday7" type="PanelContainer" parent="Weekdays"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Weekdays/Weekday7"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Sunday"
+horizontal_alignment = 1
+
+[node name="Weekday" type="PanelContainer" parent="Weekdays"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Weekdays/Weekday"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Monday"
+horizontal_alignment = 1
+
+[node name="Weekday2" type="PanelContainer" parent="Weekdays"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Weekdays/Weekday2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Tuesday"
+horizontal_alignment = 1
+
+[node name="Weekday3" type="PanelContainer" parent="Weekdays"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Weekdays/Weekday3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Wednesday"
+horizontal_alignment = 1
+
+[node name="Weekday4" type="PanelContainer" parent="Weekdays"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Weekdays/Weekday4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Thursday"
+horizontal_alignment = 1
+
+[node name="Weekday5" type="PanelContainer" parent="Weekdays"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Weekdays/Weekday5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Friday"
+horizontal_alignment = 1
+
+[node name="Weekday6" type="PanelContainer" parent="Weekdays"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Weekdays/Weekday6"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Saturday"
+horizontal_alignment = 1
+
+[node name="Days" type="GridContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 7
+
+[connection signal="pressed" from="ToolBar/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="ToolBar/Front" to="." method="_on_front_pressed"]

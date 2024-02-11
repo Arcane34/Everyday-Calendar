@@ -1,0 +1,217 @@
+[gd_scene load_steps=16 format=3 uid="uid://c74wopvw4b0oi"]
+
+[ext_resource type="Script" path="res://Scripts/new_years_res_tracker.gd" id="1_cfhe2"]
+[ext_resource type="PackedScene" uid="uid://ceon54102xjw5" path="res://Scenes/calendar.tscn" id="2_1hqhd"]
+[ext_resource type="Texture2D" uid="uid://bikaoi0u2qlq0" path="res://kenney_space-shooter-extension/PNG/Sprites/Meteors/spaceMeteors_004.png" id="2_do0ve"]
+[ext_resource type="Texture2D" uid="uid://bfqry3eevmghm" path="res://icon.svg" id="3_e22uo"]
+[ext_resource type="Texture2D" uid="uid://8shn853r7m82" path="res://kenney_space-shooter-extension/PNG/Sprites/Station/spaceStation_022.png" id="3_pvwaj"]
+[ext_resource type="Texture2D" uid="uid://pvi0rwwo4a2n" path="res://kenney_space-shooter-extension/PNG/Sprites/Station/spaceStation_023.png" id="4_32pfo"]
+[ext_resource type="Texture2D" uid="uid://cjx1s8skucobp" path="res://kenney_space-shooter-extension/PNG/Sprites/Station/spaceStation_021.png" id="5_2ugxa"]
+[ext_resource type="Texture2D" uid="uid://drx1bognae3sg" path="res://kenney_space-shooter-extension/PNG/Sprites/Meteors/spaceMeteors_002.png" id="6_g04qm"]
+[ext_resource type="Texture2D" uid="uid://blhaxjyv4fqas" path="res://kenney_space-shooter-extension/PNG/Sprites/Meteors/spaceMeteors_003.png" id="7_awurt"]
+[ext_resource type="Texture2D" uid="uid://bsmf6to45nt5s" path="res://kenney_space-shooter-extension/PNG/Sprites/Meteors/spaceMeteors_001.png" id="8_vavg8"]
+[ext_resource type="Texture2D" uid="uid://bylte0oavxd30" path="res://kenney_space-shooter-extension/PNG/Sprites/Ships/spaceShips_002.png" id="11_dhywo"]
+
+[sub_resource type="Curve2D" id="Curve2D_oev6m"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1025, 598, 22.4746, 34.4611, -22.4746, -34.4611, 975, 512, 49.4441, -7.49153, -49.4441, 7.49153, 879, 473, 35.9594, 31.4644, -35.9594, -31.4644, 796, 424, 23.9729, 23.9729, -23.9729, -23.9729, 696, 403, 16.4814, 19.478, -16.4814, -19.478, 662, 334, 0, 0, 0, 0, 596, 315)
+}
+point_count = 7
+
+[sub_resource type="Curve" id="Curve_6yb18"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0ult3"]
+curve = SubResource("Curve_6yb18")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tn5oc"]
+particle_flag_disable_z = true
+angle_max = 180.0
+spread = 180.0
+initial_velocity_min = 300.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 0, 0)
+scale_min = 10.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_0ult3")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="NewYearsResTracker" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cfhe2")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground"]
+offset_right = 1200.0
+offset_bottom = 674.0
+color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+
+[node name="FarBack" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.313726, 0.313726, 0.313726, 1)
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(0, 1800)
+
+[node name="SpaceMeteors005" type="Sprite2D" parent="ParallaxBackground/FarBack"]
+position = Vector2(655, -473)
+scale = Vector2(0.215909, 0.215909)
+texture = ExtResource("2_do0ve")
+
+[node name="SpaceMeteors011" type="Sprite2D" parent="ParallaxBackground/FarBack"]
+position = Vector2(24.6251, 192.587)
+scale = Vector2(0.139772, 0.139772)
+texture = ExtResource("2_do0ve")
+
+[node name="SpaceMeteors009" type="Sprite2D" parent="ParallaxBackground/FarBack"]
+position = Vector2(-5.99988, -414)
+scale = Vector2(0.215909, 0.215909)
+texture = ExtResource("2_do0ve")
+
+[node name="SpaceMeteors010" type="Sprite2D" parent="ParallaxBackground/FarBack"]
+position = Vector2(736, 198)
+scale = Vector2(0.215909, 0.215909)
+texture = ExtResource("2_do0ve")
+
+[node name="SpaceMeteors007" type="Sprite2D" parent="ParallaxBackground/FarBack"]
+position = Vector2(335, -173)
+scale = Vector2(0.215909, 0.215909)
+texture = ExtResource("2_do0ve")
+
+[node name="SpaceMeteors008" type="Sprite2D" parent="ParallaxBackground/FarBack"]
+position = Vector2(1018, 1.00002)
+scale = Vector2(0.215909, 0.215909)
+texture = ExtResource("2_do0ve")
+
+[node name="SpaceStation022" type="Sprite2D" parent="ParallaxBackground/FarBack"]
+position = Vector2(427.226, 247.903)
+rotation = -1.79594
+scale = Vector2(0.399384, 0.399384)
+texture = ExtResource("3_pvwaj")
+
+[node name="SpaceStation023" type="Sprite2D" parent="ParallaxBackground/FarBack"]
+position = Vector2(848.6, -350.047)
+rotation = -0.719076
+scale = Vector2(0.304369, 0.304369)
+texture = ExtResource("3_pvwaj")
+
+[node name="SpaceStation024" type="Sprite2D" parent="ParallaxBackground/FarBack"]
+position = Vector2(1100, 572)
+rotation = 2.63196
+scale = Vector2(0.304369, 0.304369)
+texture = ExtResource("3_pvwaj")
+
+[node name="Back" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.580392, 0.580392, 0.580392, 1)
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(0, 1800)
+
+[node name="SpaceStation023" type="Sprite2D" parent="ParallaxBackground/Back"]
+position = Vector2(1088.22, 61.7341)
+rotation = 2.09439
+scale = Vector2(0.563749, 0.563749)
+texture = ExtResource("4_32pfo")
+
+[node name="Close" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.639216, 0.639216, 0.639216, 1)
+motion_scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(0, 1800)
+
+[node name="SpaceStation021" type="Sprite2D" parent="ParallaxBackground/Close"]
+position = Vector2(244, -192)
+rotation = 2.15374
+scale = Vector2(0.872093, 0.872093)
+texture = ExtResource("5_2ugxa")
+
+[node name="VeryClose" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 1800)
+
+[node name="SpaceMeteors006" type="Sprite2D" parent="ParallaxBackground/VeryClose"]
+position = Vector2(168.5, 425.457)
+scale = Vector2(0.913636, 0.913636)
+texture = ExtResource("2_do0ve")
+
+[node name="SpaceMeteors002" type="Sprite2D" parent="ParallaxBackground/VeryClose"]
+position = Vector2(668, -885)
+texture = ExtResource("6_g04qm")
+
+[node name="SpaceMeteors003" type="Sprite2D" parent="ParallaxBackground/VeryClose"]
+position = Vector2(-40, -611)
+texture = ExtResource("7_awurt")
+
+[node name="SpaceMeteors001" type="Sprite2D" parent="ParallaxBackground/VeryClose"]
+position = Vector2(906, 51)
+texture = ExtResource("8_vavg8")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 442.0
+offset_bottom = 423.0
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Calendar" parent="PanelContainer" instance=ExtResource("2_1hqhd")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="PanelContainer" type="Panel" parent="PanelContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -242.0
+offset_top = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+tooltip_text = "Press this button when you have done 
+your New Year's Resolution for the day."
+text = "Complete!"
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_oev6m")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+visible = false
+position = Vector2(1025, 598)
+rotation = -2.09742
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+modulate = Color(100, 100, 100, 1)
+scale = Vector2(0.115307, 0.115307)
+texture = ExtResource("3_e22uo")
+
+[node name="Explosion" type="GPUParticles2D" parent="."]
+position = Vector2(634, 319)
+emitting = false
+amount = 300
+process_material = SubResource("ParticleProcessMaterial_tn5oc")
+one_shot = true
+explosiveness = 1.0
+
+[node name="SpaceShips002" type="Sprite2D" parent="."]
+position = Vector2(559, 563)
+texture = ExtResource("11_dhywo")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
