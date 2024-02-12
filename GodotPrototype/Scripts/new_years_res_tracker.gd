@@ -5,6 +5,8 @@ extends Control
 @onready var calendar = $PanelContainer/Calendar
 @onready var todayResButton = $Button
 @onready var backg = $ParallaxBackground
+@onready var thruster1 = $Thruster1
+@onready var thruster2 = $Thruster2
 
 var start = false
 var speed = 1
@@ -19,7 +21,8 @@ func _ready():
 
 
 func _process(delta):
-	backg.scroll_offset.y += (len(resolvedDays)+ 1)*40*delta
+	backg.scroll_offset.y += (len(resolvedDays)+ 1)*30*delta
+	thruster1.process_material.gravity.y = 300 + len(resolvedDays)*100
 	
 	if calendar.getTodayDateStr() in resolvedDays:
 		todayResButton.disabled = true
