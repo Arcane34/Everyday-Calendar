@@ -21,7 +21,7 @@ func _ready():
 
 
 func _process(delta):
-	backg.scroll_offset.y += (len(resolvedDays)+ 1)*30*delta
+	backg.scroll_offset.y += (len(resolvedDays)+ 1)*40*delta
 	thruster1.process_material.gravity.y = 300 + len(resolvedDays)*100
 	
 	if calendar.getTodayDateStr() in resolvedDays:
